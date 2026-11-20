@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yurina's Portfolio </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2547D0; --blue-deep:#142A82; --brown:#3A2418; --brown-mid:#7A4A2B;
+  --paper:#EFE9E1; --ink:#2B1B12; --sky:#C9D8F5; --on-blue:#F4EFE6;
+  --head:'Anton','Impact','Arial Narrow Bold',sans-serif;
+  --body:'Times New Roman',Times,'Liberation Serif',serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--paper:#1E140E;--ink:#EADFD2;--sky:#1B2A5C}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));height:auto}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.2rem;line-height:1.6}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);font-weight:400;line-height:.95;margin:0;letter-spacing:.01em;text-transform:uppercase}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(58,36,24,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:30}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(58,36,24,.7);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--on-blue);display:flex;gap:1.6rem;align-items:center;padding:.9rem clamp(1rem,4vw,3rem)}
+nav a{text-decoration:none;font-size:1.1rem}
+nav a:hover{text-decoration:underline;text-underline-offset:5px}
+nav .sp{flex:1}
+@media (max-width:560px){nav{gap:1rem}nav .ext{display:none}}
+
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(1rem,4vw,3rem)}
+
+#top{background:var(--blue);color:var(--on-blue);padding:clamp(3rem,9vw,7rem) 0 clamp(2.5rem,6vw,5rem)}
+#top h1{font-size:clamp(3.6rem,14vw,11rem)}
+#top h1 span{color:var(--sky)}
+.intro{max-width:34ch;font-size:clamp(1.3rem,2.6vw,1.75rem);margin:2rem 0 0;line-height:1.45}
+.links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.links a{border:2px solid var(--on-blue);padding:.45rem 1.1rem;text-decoration:none;font-size:1.1rem}
+.links a:hover{background:var(--on-blue);color:var(--blue-deep)}
+.links a.solid{background:var(--brown);border-color:var(--brown)}
+.links a.solid:hover{background:var(--on-blue);border-color:var(--on-blue)}
+
+section{padding:clamp(3rem,8vw,6rem) 0}
+#work h2,#play h2{font-size:clamp(3.2rem,11vw,8rem);color:var(--blue);margin-bottom:.4em}
+#work .lede,#play .lede{max-width:44ch;margin:0 0 3rem;font-size:1.3rem}
+
+.project{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(1.2rem,4vw,3rem);align-items:center;padding:2.2rem 0;border-top:3px solid var(--brown)}
+.project:nth-of-type(even) .shot{order:2}
+.shot{aspect-ratio:4/3;background:var(--sky);display:grid;place-items:center;font-family:var(--head);font-size:1.6rem;color:var(--blue);text-align:center;padding:1rem;text-transform:uppercase}
+.shot.b{background:var(--brown-mid);color:var(--on-blue)}
+.project h3{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--brown)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .project h3{color:var(--on-blue)}}
+.meta{margin:.6rem 0 1rem;font-style:italic}
+.project p{margin:0 0 1rem}
+.stats{display:flex;gap:2rem;margin:1.2rem 0}
+.stats b{display:block;font-family:var(--head);font-weight:400;font-size:2.4rem;color:var(--blue);line-height:1}
+.stats span{font-size:1rem}
+.go{display:inline-block;background:var(--blue);color:var(--on-blue);padding:.5rem 1.2rem;text-decoration:none}
+.go:hover{background:var(--brown)}
+@media (max-width:760px){.project{grid-template-columns:1fr}.project:nth-of-type(even) .shot{order:0}}
+
+#play{background:var(--brown);color:var(--on-blue)}
+#play h2{color:var(--sky)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.tile{background:var(--blue-deep);padding:1.4rem;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.tile:nth-child(3n+2){background:var(--brown-mid)}
+.tile h3{font-size:2rem;color:var(--on-blue)}
+.tile p{margin:.8rem 0 0;font-size:1.05rem;line-height:1.45}
+
+footer{background:var(--blue);color:var(--on-blue);padding:3rem 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+footer h2{font-size:clamp(2rem,6vw,3.6rem)}
+#top,#work,#play{position:relative;overflow:hidden;isolation:isolate}
+#top .wrap,#work .wrap,#play .wrap{position:relative;z-index:1}
+#top::before,#top::after,#work::before,#play::before,#play::after{content:"";position:absolute;border-radius:50%;z-index:-1}
+#top::before{width:min(55vw,640px);aspect-ratio:1;right:-10vw;top:-10vw;background:rgba(58,36,24,.7);filter:blur(36px)}
+#top::after{width:min(38vw,460px);aspect-ratio:1;right:22vw;bottom:-12vw;background:rgba(201,216,245,.4);filter:blur(30px)}
+#work::before{width:min(50vw,600px);aspect-ratio:1;left:-14vw;top:12%;background:rgba(37,71,208,.38);filter:blur(44px)}
+.project{background:rgba(255,255,255,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:2rem clamp(1rem,3vw,2rem);margin-bottom:1.6rem;box-shadow:0 14px 34px rgba(58,36,24,.12)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .project{background:rgba(255,255,255,.05)}}
+.shot{box-shadow:14px 14px 0 rgba(58,36,24,.2),0 18px 40px rgba(20,42,130,.28);opacity:.92}
+.go{box-shadow:0 8px 18px rgba(20,42,130,.3)}
+#play::before{width:min(55vw,640px);aspect-ratio:1;left:-10vw;top:-8vw;background:rgba(37,71,208,.65);filter:blur(30px)}
+#play::after{width:min(40vw,460px);aspect-ratio:1;right:-6vw;bottom:-8vw;background:rgba(201,216,245,.3);filter:blur(24px)}
+.tile,.tile:nth-child(3n+2){background:rgba(244,239,230,.1);border:1px solid rgba(244,239,230,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 36px rgba(0,0,0,.28)}
+.tile:nth-child(3n+2){background:rgba(122,74,43,.45)}
+footer{position:relative;overflow:hidden}
+#work::after{content:"";position:absolute;z-index:-1;border-radius:50%;width:min(40vw,460px);aspect-ratio:1;right:-8vw;bottom:6%;background:rgba(122,74,43,.35);filter:blur(44px)}
+#top .intro{background:rgba(244,239,230,.1);border:1px solid rgba(244,239,230,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 36px rgba(0,0,0,.28);padding:1.4rem 1.6rem;max-width:38ch}
+#work .lede{margin-bottom:2rem}
+.project{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:1.4rem;padding:1.1rem 1.4rem;margin-bottom:1rem}
+.shot{aspect-ratio:16/10;font-size:1.1rem;padding:.6rem;box-shadow:8px 8px 0 rgba(58,36,24,.2),0 12px 28px rgba(20,42,130,.28)}
+.project h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.meta{margin:.3rem 0 .6rem;font-size:1.05rem}
+.project p{font-size:1.05rem;line-height:1.5;margin:0 0 .6rem}
+.stats{margin:.6rem 0 .8rem;gap:1.4rem}
+.stats b{font-size:1.7rem}
+.stats span{font-size:.95rem}
+.go{padding:.35rem .9rem;font-size:1rem}
+@media (max-width:760px){.project{grid-template-columns:1fr}.shot{max-width:320px}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cards .project h3{font-size:1.6rem}
+.cards .project p{font-size:1rem;line-height:1.45}
+.cards .meta{font-size:.95rem}
+.cards .shot{font-size:1rem}
+.cards .stats b{font-size:1.5rem}
+.cards .go{padding:.3rem .8rem;font-size:.95rem}
+.cards .project{display:block;position:relative;margin:0;padding:1.1rem 1.2rem 1.3rem;transition:transform .2s,box-shadow .2s}
+.cards .project:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(58,36,24,.2)}
+.cards .project:focus-within{outline:3px solid var(--blue);outline-offset:3px}
+.cards .shot{aspect-ratio:16/9;max-width:none;margin-bottom:1rem}
+.cards .go::after{content:"";position:absolute;inset:0}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.cards .project{transition:none}.cards .project:hover{transform:none}}
+body{background:var(--brown);color:var(--on-blue)}
+nav{border-bottom:1px solid rgba(244,239,230,.15)}
+#top{background:var(--brown)}
+#top::before{background:rgba(37,71,208,.65)}
+#top::after{background:rgba(201,216,245,.3)}
+#work{background:#2E1B12}
+#work h2{color:var(--sky)}
+#work::after{background:rgba(201,216,245,.22)}
+.project,.cards .project{background:rgba(244,239,230,.1);border:1px solid rgba(244,239,230,.28);box-shadow:0 16px 36px rgba(0,0,0,.3)}
+.cards .project:hover{box-shadow:0 22px 44px rgba(0,0,0,.45)}
+.project h3,.cards .project h3{color:var(--on-blue)}
+.stats b{color:var(--sky)}
+.shot{box-shadow:8px 8px 0 rgba(0,0,0,.28),0 12px 28px rgba(0,0,0,.35)}
+.go{background:var(--blue);box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.go:hover{background:var(--brown-mid)}
+footer{background:#2A190F;border-top:1px solid rgba(244,239,230,.15)}
+footer .links a{background:rgba(244,239,230,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+footer .links a:hover{background:var(--on-blue);color:var(--brown)}
+a.project{color:inherit;text-decoration:none;cursor:pointer}
+img.shot{display:block;width:100%;height:auto;padding:0;object-fit:cover;background:var(--sky)}
+.cards a.project:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+#top .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(1.2rem,4vw,3rem)}
+.me{display:block;width:min(30vw,360px);aspect-ratio:4/5;object-fit:cover;opacity:.65;transform:translate(clamp(1rem,5vw,4.5rem),-14%);background:rgba(244,239,230,.1);border-radius:58% 42% 55% 45% / 52% 48% 52% 48%;animation:ooze 12s ease-in-out infinite;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+@media (max-width:760px){#top .wrap{grid-template-columns:1fr}.me{width:min(70vw,260px);transform:none}}
+@keyframes ooze{0%,100%{border-radius:58% 42% 55% 45% / 52% 48% 52% 48%}33%{border-radius:45% 55% 42% 58% / 58% 42% 58% 42%}66%{border-radius:52% 48% 60% 40% / 44% 56% 44% 56%}}
+@media (prefers-reduced-motion:reduce){.me{animation:none}}
+a.tile{color:inherit;text-decoration:none;gap:1rem;justify-content:flex-start;transition:transform .2s,box-shadow .2s}
+a.tile[href]{cursor:pointer}
+a.tile[href]:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(0,0,0,.45)}
+a.tile:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.tile-img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:rgba(244,239,230,.12);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.tile{min-height:0}
+@media (prefers-reduced-motion:reduce){a.tile{transition:none}a.tile[href]:hover{transform:none}}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+img.shot,.tile-img{opacity:.8;transition:opacity .2s}
+.cards .project:hover img.shot,.cards a.project:focus-visible img.shot,a.tile[href]:hover .tile-img,a.tile:focus-visible .tile-img{opacity:1}
+@media (prefers-reduced-motion:reduce){img.shot,.tile-img{transition:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Primary">
+  <a href="#top">hello</a><a href="#work">work</a><a href="#play">play</a>
+  <span class="sp"></span>
+  <a class="ext" href="https://www.linkedin.com/in/yurina-tamura">LinkedIn</a>
+  <a class="ext" href="mailto:yurinatamura17@gmail.com">Email</a>
+  <a class="resume" href="https://docs.google.com/document/d/1QJnmidp4TEdhhgXnHIWEaBqOl1TBGULT/edit?usp=sharing&ouid=118048266825924092166&rtpof=true&sd=true">Resume</a>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div>
+    <h1>Hi! I’m<br><span>Yurina</span></h1>
+    <p class="intro">I’m passionate about learning, researching, and building a product.<br>Currently I work in gaming at GungHo; before that in the MedTech industry. </p>
+    </div>
+    <img class="me" src="images/face.png" alt="Photo of Yurina">
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Work</h2>
+    <p class="lede">Filling my professional & academic space with... </p>
+
+    <div class="cards">
+      <a class="project" href="https://trails2ndchapter.com/" target="_blank" rel="noopener">
+        <img class="shot" src="images/597ccbdaa02be2eab407448455ab1d4dcc93abde5a75d5886dd0570317272181.avif" alt="Trails in the Sky 2nd Chapter">
+        <h3>Trails in the Sky 2nd</h3>
+        <p class="meta">Product Coordinator<br>@ GungHo / 2026</p>
+        <p>Production, Marketing, Logistics, & Strategy for the BEST JRPG of 2026.</p>
+        <div class="stats"><div><b>92</b><span>Metacritic Score</span></div></div>
+      </a>
+      <a class="project" href="https://www.cryoport.com/solutions/" target="_blank" rel="noopener">
+        <img class="shot" src="images/cryovialbox.jpg" alt="Project Two">
+        <h3>Cryovial Box</h3>
+        <p class="meta">Product Management Intern<br>@ Cryoport Systems / 2025</p>
+        <p>Research and Development, Marketing, Documentation, Client Services.</p>
+        <div class="stats"><div><b>15%</b><span>Retention Increase</span></div></div>
+      </a>
+      <a class="project" href="https://bbcomp.tech.uci.edu/past/2025-winners/" target="_blank" rel="noopener">
+        <img class="shot" src="images/florence.png" alt="Project Three">
+        <h3>Florence</h3>
+        <p class="meta">Butterworth Project<br>@ UC Irvine / 2026</p>
+        <p>Real-time patient monitoring system support for nurses and healthcare providers.</p>
+        <div class="stats"><div><b>10K+</b><span>in Funding</span></div></div>
+      </a>
+      <a class="project" href="https://canva.link/lvv8564b9h56ztw" target="_blank" rel="noopener">
+        <img class="shot" src="images/Neuroboost.png" alt="Project Four">
+        <h3>NeuroBoost</h3>
+        <p class="meta">Stella Zhang Project<br>@ UC Irvine / 2026</p>
+        <p>Worked with UC Health & Epic to develop a Neuro ICU decision support platform.</p>
+        <div class="stats"><div><b>30+</b><span>Testimonials</span></div></div>
+      </a>
+      <a class="project" href="https://canva.link/csoe9jkatdhtd6k" target="_blank" rel="noopener">
+        <img class="shot" src="images/Syval.png" alt="Project Five">
+        <h3>Syval </h3>
+        <p class="meta">Product Development Intern<br>@ Syval(Ekonte) / 2025</p>
+        <p>Research, Outreach, Marketing, Educational Content, for a Fintech Startup.</p>
+        <div class="stats"><div><b>1000+</b><span>Users</span></div></div>
+      </a>
+      <a class="project" href="https://www.actuatemedia.com/" target="_blank" rel="noopener">
+        <img class="shot" src="images/SEO.png" alt="Project Six">
+        <h3>Actuate Media</h3>
+        <p class="meta">Digital Marketing Intern<br>@ Actuate Media / 2024</p>
+        <p>Digital Marketing, SEO, Client Relations, and Google Certifications. </p>
+        <div class="stats"><div><b>25%</b><span>Traffic Increase</span></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="play">
+  <div class="wrap">
+    <h2>Play</h2>
+    <p class="lede">Hobby maxxing after my corporate time. </p>
+
+    <div class="grid">
+      <a class="tile" href="https://www.instagram.com/yurinaphotos?gwpx=NndsOThuMTl6bjdm&utm_source=qr" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_8634.JPG" alt="Hobby One">
+        <div><h3>Photography</h3><p>My longest yearning. <br>Capturing all emotions.</p></div>
+      </a>
+      <a class="tile" href="https://www.instagram.com/yuribloomz?gwpx=eGMyMHY2dGc3ZzY3&utm_source=qr" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_5427.JPG" alt="Hobby Two">
+        <div><h3>Flower Arrangements</h3><p>NEW hobby, support my business!</p></div>
+      </a>
+      <a class="tile" href="https://www.tiktok.com/t/ZPNNQakuW/" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_8626.JPG" alt="Hobby Three">
+        <div><h3>Basketball</h3><p>Keeps me active. <br>Challenge me in a 3 point shoot out.</p></div>
+      </a>
+      <a class="tile" href="https://medium.com/@yrtamura" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_6309.JPG" alt="Hobby Four">
+        <div><h3>Creative Writing</h3><p>Scrapebooking, reading, & posting Medium articles.</p></div>
+      </a>
+      <a class="tile" href="https://beliapp.co/app/chonksterz" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_5370.jpeg" alt="Hobby Five">
+        <div><h3>Eating</h3><p>I take this extremely seriously. <br>Add me on BELI! </p></div>
+      </a>
+      <a class="tile" href="https://www.tiktok.com/t/ZPNNQkwX9/" target="_blank" rel="noopener">
+        <img class="tile-img" src="images/IMG_4557.JPG" alt="Hobby Six">
+        <div><h3>Traveling</h3><p>Booking tickets beyond my means.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Let’s be friends.</h2>
+    <div class="links" style="margin:0">
+      <a href="mailto:yurinatamura17@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/yurina-tamura">LinkedIn</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
